@@ -16,3 +16,17 @@ button{
     margin-top: 5px;
     font-weight: bold;
 }
+
+
+.pivot{
+    background-color: #c3e6cb;
+    font-weight: bold;
+}
+
+.profiles{
+    padding-left: 50px;
+    list-style: none;
+}
+.profiles a{
+    text-decoration: none;
+}

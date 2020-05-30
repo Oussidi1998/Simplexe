@@ -1,12 +1,6 @@
 <?php
 include 'includes/header.php';
 
-if(isset($_POST["calcul"])){
-    echo "<pre>";
-    print_r($_POST);
-    echo "</pre>";
-}
-
 if(isset($_POST["nb_contrainte"],$_POST["nb_variable"],$_POST["method"])){
     $_SESSION["nb_contrainte"]=$_POST["nb_contrainte"];
     $_SESSION["nb_variable"]=$_POST["nb_variable"];
@@ -24,7 +18,7 @@ if(isset($_POST["nb_contrainte"],$_POST["nb_variable"],$_POST["method"])){
             <div class="card p-5">
                 <h2 class="text-center">Simplexe - <?=$_SESSION["method"]==1 ? "Maximisation" : "Minimisation" ?></h2>
                 <br>
-                <form id="formFillContraintes" action="FillContraintes.php" method="post">
+                <form id="formFillContraintes" action="result.php" method="post">
                     <div class="form-group mt-5">
                         <label class="mb-4"><b>La Fonction Objectif</b></label>
                         <div class="row">
@@ -52,7 +46,7 @@ if(isset($_POST["nb_contrainte"],$_POST["nb_variable"],$_POST["method"])){
                             <?php for($j=1;$j<=$_SESSION["nb_variable"];$j++): ?>
                             <div class="col">
                                 <div class="input-group mb-2 mb-sm-0">
-                                    <input name="data['c_v_values'][]" type="number" class="form-control"
+                                    <input name="c_v_values[]" type="number" class="form-control"
                                         placeholder="valeur de X<?=$j?>">
                                     <div class="input-group-addon">X<?=$j?></div>
                                 </div>
@@ -65,7 +59,7 @@ if(isset($_POST["nb_contrainte"],$_POST["nb_variable"],$_POST["method"])){
 
                             <!-- contrainte operation -->
                             <div class="col-2">
-                                <select class="form-control" name="data['contrainte_operation'][]">
+                                <select class="form-control" name="contrainte_operations[]">
                                     <option value="inf_egal"> &le; </option>
                                     <option value="sup_egal">&ge;</option>
                                     <option value="egal">=</option>
@@ -73,7 +67,7 @@ if(isset($_POST["nb_contrainte"],$_POST["nb_variable"],$_POST["method"])){
                             </div>
                             <!-- contrainte value -->
                             <div class="col">
-                                <input type="number" name="data['contrainte_value'][]" class="form-control"
+                                <input type="number" name="contrainte_values[]" class="form-control"
                                     placeholder="valeur de contrainte">
                             </div>
 
